@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Manipal</title>
+
+  <!-- Google fonts (local fallback if blocked) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg" alt="Online Manipal logo" style="height:34px;border-radius:6px;object-fit:cover">
+        <div>
+          <div style="font-weight:700">Online MANIPAL</div>
+          <div style="font-size:12px;color:#f0f0f0">NAAC A+ Accredited — Online Degrees</div>
+        </div>
+      </div>
+      <div class="contact">
+        <div style="font-weight:600">+91-7304 000 444</div>
+        <button class="apply-btn">Apply Now</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero container" aria-label="Hero section">
+      <div class="hero-left" role="img" aria-label="Hero background image">
+        <h1>NAAC A+ Accredited<br>Online Degrees from <strong>Manipal University Jaipur (MUJ)</strong></h1>
+        <div class="programs">MBA | BBA | MCA | BCA | MCOM | BCOM | MAJMC</div>
+
+        <button class="download-btn" onclick="alert('Download Brochure clicked')">Download Brochure</button>
+
+        <div class="badges" aria-hidden>
+          <div class="badge">NAAC A+ Accredited</div>
+          <div class="badge">UGC Entitled</div>
+          <div class="badge">NIRF Ranked Top 100</div>
+        </div>
+
+        <div class="overlay-circle">360°</div>
+      </div>
+
+      <aside class="lead-form" aria-label="Lead form">
+        <h3>Join 50,000+ Learners Across India</h3>
+        <p>Take the step toward 360° Degree of Success</p>
+
+        <div class="form-row">
+          <input id="name" type="text" placeholder="Enter your full name" />
+          <input id="email" type="email" placeholder="Enter your email" />
+          <div style="display:flex;gap:8px">
+            <input id="phone" type="tel" placeholder="+91 - Enter your mobile number" style="flex:1" />
+          </div>
+          <select id="course" aria-label="Select course">
+            <option value="">Select course*</option>
+            <option>Master of Business Administration (MBA)</option>
+            <option>Master of Computer Applications (MCA)</option>
+            <option>Online Master of Arts (MA) in Economics</option>
+            <option>Bachelor of Commerce (B.Com)</option>
+          </select>
+        </div>
+
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px">
+          <input type="checkbox" id="consent" />
+          <div class="small-note">I authorize Online Manipal and its associates to contact me with updates via email, SMS, WhatsApp and calls. This consent will override any registration for DNC / NDNC.</div>
+        </label>
+
+        <button class="enroll-btn" onclick="submitLead()">Enroll Now</button>
+
+        <div class="form-footer">
+          <div class="small-note">Application Closes On 10 Dec</div>
+          <div style="background:#f4b66e;padding:6px 10px;border-radius:8px;color:#1b0e00;font-weight:700">95% Off fees</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- USPs -->
+    <section class="usps container" aria-label="USPs">
+      <div class="usp">100% flexible learning</div>
+      <div class="usp">Industry relevant curriculum</div>
+      <div class="usp">At par with on-campus degrees</div>
+      <div class="usp">100% placement assistance</div>
+    </section>
+
+    <!-- Rankings -->
+    <section class="rankings" aria-label="Rankings and accreditations">
+      <h3 style="margin:0 0 10px;font-size:18px">Rankings & Accreditations</h3>
+      <div class="ranking-track" role="list">
+        <div class="ranking-card" role="listitem">
+          <div style="font-weight:700;color:#ff6a00">NIRF</div>
+          <h4>Ranked 52</h4>
+          <div class="muted small">Ranked among the top universities in 2025</div>
+        </div>
+        <div class="ranking-card">
+          <div style="font-weight:700;color:#d18b00">NAAC</div>
+          <h4>A+ Accredited</h4>
+          <div class="muted small">National Assessment and Accreditation Council</div>
+        </div>
+        <div class="ranking-card">
+          <div style="font-weight:700;color:#0a6">UGC</div>
+          <h4>UGC-certified</h4>
+          <div class="muted small">Online degrees equivalent to campus degrees</div>
+        </div>
+        <div class="ranking-card">
+          <div style="font-weight:700">QS</div>
+          <h4>Ranked 300-400</h4>
+          <div class="muted small">Amongst world top universities (QS)</div>
+        </div>
+        <div class="ranking-card">
+          <div style="font-weight:700">CAREERS360</div>
+          <h4>Rank 9</h4>
+          <div class="muted small">Top management institutions (2025)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top degree courses -->
+    <section class="section" aria-label="Top degree courses">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h2>Explore Our Top Online Degree Courses</h2>
+        <div class="small muted">Master's Degree / Bachelor's Degree</div>
+      </div>
+
+      <div class="courses" style="margin-top:12px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <button onclick="slideCourses(-1)" style="padding:8px 10px;border-radius:8px;border:1px solid #eee;background:#fff">◀</button>
+          <button onclick="slideCourses(1)" style="padding:8px 10px;border-radius:8px;border:1px solid #eee;background:#fff">▶</button>
+        </div>
+
+        <div style="flex:1;overflow:hidden">
+          <div class="course-slider" id="courseSlider">
+            <!-- Course 1 -->
+            <article class="course">
+              <div class="img" style="background-image:url('/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg')"></div>
+              <div class="body">
+                <div class="title">Master of Business Administration</div>
+                <div class="meta">Manipal University Jaipur • ⭐ 4.8</div>
+                <div class="meta">0% interest EMI • Attractive Scholarships • Starts: 01/12/2024</div>
+                <button class="cta" onclick="enrollCourse('Master of Business Administration')">Enroll Now</button>
+              </div>
+            </article>
+
+            <!-- Course 2 -->
+            <article class="course">
+              <div class="img" style="background-image:url('/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg')"></div>
+              <div class="body">
+                <div class="title">Master of Business Administration (Trending)</div>
+                <div class="meta">Sikkim Manipal University • ⭐ 4.6</div>
+                <div class="meta">Online • Industry relevant curriculum</div>
+                <button class="cta" onclick="enrollCourse('MBA (Trending)')">Enroll Now</button>
+              </div>
+            </article>
+
+            <!-- Course 3 -->
+            <article class="course">
+              <div class="img" style="background-image:url('/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg')"></div>
+              <div class="body">
+                <div class="title">Master of Computer Applications</div>
+                <div class="meta">Sikkim Manipal University • ⭐ 4.5</div>
+                <div class="meta">Scholarships • Placement assistance</div>
+                <button class="cta" onclick="enrollCourse('Master of Computer Applications')">Enroll Now</button>
+              </div>
+            </article>
+
+            <!-- Course 4 -->
+            <article class="course">
+              <div class="img" style="background-image:url('/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg')"></div>
+              <div class="body">
+                <div class="title">Online Master of Arts (MA) in Economics</div>
+                <div class="meta">Manipal University Jaipur • ⭐ 4.2</div>
+                <div class="meta">Flexible schedule • Career-focused</div>
+                <button class="cta" onclick="enrollCourse('MA in Economics')">Enroll Now</button>
+              </div>
+            </article>
+
+            <!-- Course 5 -->
+            <article class="course">
+              <div class="img" style="background-image:url('/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg')"></div>
+              <div class="body">
+                <div class="title">Online Master of Arts — (General)</div>
+                <div class="meta">Manipal University Jaipur • ⭐ 4.0</div>
+                <div class="meta">Scholarships & EMIs available</div>
+                <button class="cta" onclick="enrollCourse('Online MA')">Enroll Now</button>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unlock 360° advantage -->
+    <section class="advantage-wrap" aria-label="360 advantage">
+      <div class="adv-cards">
+        <div class="adv-card">Globally recognized Prestigious Degree</div>
+        <div class="adv-card">Industry relevant curriculum</div>
+        <div class="adv-card">100% placement assistance</div>
+        <div class="adv-card">Easy Financing Options</div>
+      </div>
+
+      <div class="adv-sub">
+        <div class="box">
+          <strong>Avail easy financing options</strong>
+          <div class="muted small">With our no-cost EMIs, we let your learning take the spotlight without the stress of financing.</div>
+        </div>
+        <div class="box">
+          <strong>Get attractive scholarships</strong>
+          <div class="muted small">Exclusive scholarships for defence personnel, government employees, differently-abled people & meritorious students.</div>
+        </div>
+      </div>
+
+      <div class="center">
+        <button class="enroll-btn" style="margin-top:14px" onclick="alert('Request call back')">Request call back</button>
+      </div>
+    </section>
+
+    <!-- Online Manipal Advantages -->
+    <section class="features" aria-label="advantages">
+      <div class="feature">Flexible & convenient schedule</div>
+      <div class="feature">At par with on-campus degrees</div>
+      <div class="feature">Experienced faculty & mentors</div>
+      <div class="feature">Prestigious Manipal alumni network</div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" aria-label="testimonials">
+      <h3 style="margin:0 0 10px">Real Stories, Real Impact</h3>
+      <div class="test-list">
+        <div class="test-card">
+          <img src="/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg" alt="student" />
+          <h4 style="margin:8px 0 2px">Menka Sharma</h4>
+          <div class="muted small">MCA • MUJ</div>
+          <p>I always wanted to pursue my higher education... MUJ made it possible with flexible online degrees.</p>
+          <a href="#" class="small">Read More</a>
+        </div>
+
+        <div class="test-card">
+          <img src="/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg" alt="student" />
+          <h4 style="margin:8px 0 2px">Sahanik</h4>
+          <div class="muted small">B.COM • MUJ</div>
+          <p>Funding my undergraduate degree and helping my younger brother's education was possible only because of Online Manipal.</p>
+          <a href="#" class="small">Read More</a>
+        </div>
+
+        <div class="test-card">
+          <img src="/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg" alt="student" />
+          <h4 style="margin:8px 0 2px">Babas Arniva</h4>
+          <div class="muted small">MBA • MUJ</div>
+          <p>After being married off, I couldn't fulfil my dream of continuing my studies. Online Manipal helped me.</p>
+          <a href="#" class="small">Read More</a>
+        </div>
+
+        <div class="test-card">
+          <img src="/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg" alt="student" />
+          <h4 style="margin:8px 0 2px">Sabin Lamichhane</h4>
+          <div class="muted small">MBA • MUJ</div>
+          <p>As a working professional, I wanted to enhance my domain knowledge. Online Manipal enabled my career growth.</p>
+          <a href="#" class="small">Read More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final enquire -->
+    <section class="final-contact">
+      <div class="form">
+        <h3>Advance Your Career</h3>
+        <div class="small muted">Fill in your information, and our team will contact you shortly.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-direction:column">
+          <input type="text" id="final_name" placeholder="Full name *" style="padding:10px;border-radius:8px;border:1px solid #ddd" />
+          <input type="email" id="final_email" placeholder="Enter your email *" style="padding:10px;border-radius:8px;border:1px solid #ddd" />
+          <input type="tel" id="final_phone" placeholder="Mobile number *" style="padding:10px;border-radius:8px;border:1px solid #ddd" />
+          <select id="final_course" style="padding:10px;border-radius:8px;border:1px solid #ddd">
+            <option value="">Select course</option>
+            <option>MBA</option>
+            <option>MCA</option>
+            <option>MA (Economics)</option>
+            <option>B.Com</option>
+          </select>
+          <label style="display:flex;gap:8px;align-items:center">
+            <input type="checkbox" id="final_consent"/> <span class="small muted">I authorize Online Manipal to contact me via email, SMS, WhatsApp and calls.</span>
+          </label>
+          <button class="enroll-btn" onclick="submitFinal()">Apply Now</button>
+        </div>
+      </div>
+
+      <div class="hero-img">
+        <img src="/mnt/data/Screenshot_25-11-2025_135133_muj.onlinemanipal.com.jpeg" alt="support" />
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2024 Online Manipal — All Rights Reserved
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
