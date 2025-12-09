@@ -1,0 +1,404 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1552447915899152');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1552447915899152&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VM4D9DFER"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0VM4D9DFER');
+  </script>
+  <title>Thank You - Online Manipal</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="alternate icon" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    .thankyou.html-container {
+      min-height: 100vh;
+      display: flex;    
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thankyou.html-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,107,0,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .thankyou.html-card {
+      background: white;
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      max-width: 650px;
+      width: 100%;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+      animation: slideUp 0.6s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .success-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      background: linear-gradient(135deg, #ff6b00 0%, #ff8c42 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.5s ease-out 0.2s both;
+      box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .success-icon svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .thankyou.html-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .thankyou.html-card .subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .info-box {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: left;
+    }
+
+    .info-box h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-box li {
+      padding: 10px 0;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-box li:before {
+      content: "✓";
+      color: #ff6b00;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff6b00 0%, #ff8c42 100%);
+      color: white;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 107, 0, 0.5);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #ff6b00;
+      padding: 16px 40px;
+      border: 2px solid #ff6b00;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #ff6b00;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .contact-info {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .contact-info p {
+      color: #666;
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .contact-info a {
+      color: #ff6b00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .thankyou.html-card {
+        padding: 40px 25px;
+      }
+
+      .thankyou.html-card h1 {
+        font-size: 32px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .success-icon {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .thankyou.html-container {
+        padding: 15px;
+      }
+
+      .thankyou.html-card {
+        padding: 30px 20px;
+        border-radius: 12px;
+      }
+
+      .thankyou.html-card h1 {
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+
+      .thankyou.html-card p {
+        font-size: 15px;
+        margin-bottom: 28px;
+      }
+
+      .success-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+
+      .info-box {
+        padding: 16px;
+        margin-top: 28px;
+      }
+
+      .info-box h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .info-box li {
+        font-size: 13px;
+        padding-left: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Prevent direct access - check if user came from form submission
+    if (!document.referrer || !document.referrer.includes(window.location.hostname)) {
+      // Redirect to home if accessed directly
+      window.location.href = '/';
+    }
+    
+    // Store access flag in sessionStorage
+    const hasAccess = sessionStorage.getItem('formSubmitted');
+    if (!hasAccess) {
+      window.location.href = '/';
+    }
+    
+    // Clear the access flag after 5 seconds
+    setTimeout(() => {
+      sessionStorage.removeItem('formSubmitted');
+    }, 5000);
+    
+    // Prevent back button to thank you page
+    window.history.pushState(null, '', window.location.href);
+    window.onpopstate = function() {
+      window.history.pushState(null, '', window.location.href);
+    };
+  </script>
+  
+  <div class="thankyou.html-container">
+    <div class="thankyou.html-card">
+      <div class="success-icon">
+        <svg viewBox="0 0 52 52">
+          <path d="M14 27l8 8 16-16"/>
+        </svg>
+      </div>
+
+      <h1>Thank You!</h1>
+      <p class="subtitle">
+        Your application has been submitted successfully. Our admission counselor will contact you shortly to guide you through the next steps.
+      </p>
+
+      <div class="info-box">
+        <h3>
+          <span>📋</span> What Happens Next?
+        </h3>
+        <ul>
+          <li>You'll receive a confirmation email within 24 hours</li>
+          <li>Our counselor will call you within 2 business days</li>
+          <li>We'll guide you through the admission process</li>
+          <li>You can download the course brochure from your email</li>
+        </ul>
+      </div>
+
+      <div class="button-group">
+        <a href="/" class="btn-primary">Back to Home</a>
+        <a href="/#courses" class="btn-secondary">Explore Courses</a>
+      </div>
+
+      <div class="contact-info">
+        <p><strong>Need immediate assistance?</strong></p>
+        <p>Call us: <a href="tel:+918920785477">+91-8920 785 477</a></p>
+        <p>Email: <a href="mailto:info@manipalonlineuniversity.in">info@manipalonlineuniversity.in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Optional: Auto-redirect to home after 30 seconds
+    // setTimeout(() => {
+    //   window.location.href = 'index.html';
+    // }, 30000);
+  </script>
+</body>
+</html>
