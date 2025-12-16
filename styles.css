@@ -223,11 +223,11 @@ header{
   justify-content: center;
   height: 550px;
   z-index: 1;
-  margin-bottom: -20px;
+  margin-bottom: -120px;
 }
 
 .hero-person {
-  height: 105%;
+  height: 100%;
   width: auto;
   object-fit: contain;
   object-position: bottom center;

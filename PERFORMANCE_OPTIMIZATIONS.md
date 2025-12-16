@@ -44,7 +44,7 @@ Your website has been significantly optimized for speed with multiple performanc
 - ⚠️ **Images Kept Eager-Loading** (above-the-fold):
   - Logo (OM_Logo.svg)
   - Hero badge icons (naac.png, ugc.png, nirf.png)
-  - Hero images (abd.png, abd-sign-white.svg, 360.png)
+  - Hero images (abd.png, 360.png)
 
 ### 4. **Server-Side Optimizations (.htaccess)**
 
