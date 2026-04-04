@@ -39,9 +39,12 @@ function scrollCourses(direction) {
 }
 
 function enrollCourse(course, university){
-  document.getElementById('course').value = course;
-  window.scrollTo({top:0,behavior:'smooth'});
-  showNotification('Selected course: ' + course + ' from ' + university + '. Please fill the form to enroll.', 'info');
+  // Open the Apply Now modal and pre-select the course
+  const courseSelect = document.getElementById('apply_course');
+  if (courseSelect) {
+    courseSelect.value = course;
+  }
+  openApplyNowModal();
 }
 
 // Tab switching function
@@ -280,24 +283,88 @@ function downloadBrochure(event) {
   });
 }
 
-// Testimonial slider function
-function scrollTestimonials(direction) {
-  const testimonialGrid = document.querySelector('.testimonial-grid');
-  const cardWidth = 340; // card width
-  const gap = 24; // gap between cards
+// Placement carousel scroll function
+function scrollPlacement(direction) {
+  const container = document.getElementById('placementScroll');
+  const cardWidth = 320; // card width
+  const gap = 30; // gap between cards
   const scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at a time
   
-  if (direction === 1) {
-    testimonialGrid.scrollBy({
+  if (direction === 'right') {
+    container.scrollBy({
       left: scrollAmount,
       behavior: 'smooth'
     });
   } else {
-    testimonialGrid.scrollBy({
+    container.scrollBy({
       left: -scrollAmount,
       behavior: 'smooth'
     });
   }
+}
+
+// Testimonial carousel scroll function
+function scrollTestimonials(direction) {
+  const container = document.getElementById('testimonialSlider');
+  const cardWidth = 320; // card width
+  const gap = 25; // gap between cards
+  const scrollAmount = (cardWidth + gap); // Scroll 1 card at a time
+  
+  if (direction === 'right') {
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  } else {
+    container.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Play testimonial video
+function playTestimonialVideo(videoId) {
+  // Open video modal or redirect to video
+  console.log('Playing video:', videoId);
+  // You can implement a video modal here
+  alert('Video player will open: ' + videoId);
+}
+
+// Play admission process video
+function playAdmissionVideo() {
+  // Open admission process video modal or YouTube link
+  console.log('Playing admission process video');
+  // You can implement a video modal or link to YouTube video
+  alert('Admission process video will play here. You can link this to a YouTube video or video modal.');
+}
+
+// Faculty carousel scroll function
+function scrollFaculty(direction) {
+  const container = document.getElementById('facultySlider');
+  const cardWidth = 320; // card width
+  const gap = 25; // gap between cards
+  const scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at a time
+  
+  if (direction === 'right') {
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  } else {
+    container.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Show full testimonial text
+function showFullTestimonial(testimonialId) {
+  // Open a modal with full testimonial text
+  console.log('Showing full testimonial:', testimonialId);
+  // You can implement a modal to show the full testimonial
+  alert('Full testimonial will be displayed in a modal (testimonial ' + testimonialId + ')');
 }
 
 // Testimonial Modal Functions
@@ -428,6 +495,26 @@ function submitApplyNow(event) {
 // Read More functionality for testimonials (now handled via onclick in HTML)
 document.addEventListener('DOMContentLoaded', function() {
   // Any additional initialization can go here
+  
+  // Auto-open Apply Now modal after 6 seconds (only once per session)
+  if (!sessionStorage.getItem('popupShown')) {
+    setTimeout(function() {
+      // Only show if no modal is currently open and form hasn't been submitted
+      const brochureModal = document.getElementById('brochureModal');
+      const testimonialModal = document.getElementById('testimonialModal');
+      const applyNowModal = document.getElementById('applyNowModal');
+      
+      const isBrochureOpen = brochureModal && brochureModal.classList.contains('show');
+      const isTestimonialOpen = testimonialModal && (testimonialModal.classList.contains('show') || testimonialModal.style.display === 'flex');
+      const isApplyNowOpen = applyNowModal && (applyNowModal.classList.contains('show') || applyNowModal.style.display === 'flex');
+      
+      // Don't show if any modal is already open or form was already submitted
+      if (!isBrochureOpen && !isTestimonialOpen && !isApplyNowOpen && !sessionStorage.getItem('formSubmitted')) {
+        openApplyNowModal();
+        sessionStorage.setItem('popupShown', 'true');
+      }
+    }, 6000); // 6 seconds delay
+  }
 });
 
 // Footer Form Submission
@@ -567,3 +654,92 @@ if (rankingTrack) {
     startRankingAutoScroll();
   });
 }
+
+// New ranking tab switching and scrolling functions
+function switchRankingTab(university) {
+  // Hide all tabs
+  const allTabs = document.querySelectorAll('.ranking-tab-content');
+  allTabs.forEach(tab => tab.classList.remove('active'));
+  
+  // Show selected tab
+  const selectedTab = document.getElementById(university + '-rankings');
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+  }
+  
+  // Update button states
+  const allButtons = document.querySelectorAll('.ranking-tab-btn');
+  allButtons.forEach(btn => btn.classList.remove('active'));
+  
+  event.target.classList.add('active');
+}
+
+function scrollRankings(direction, university) {
+  const container = document.querySelector(`#${university}-rankings .rankings-grid-scroll`);
+  if (!container) return;
+  
+  const scrollAmount = 280; // card width + gap
+  
+  if (direction === 'right') {
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  } else {
+    container.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// BCom page specific functions
+function handleApplyFormSubmit(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData.entries());
+  
+  // Validate
+  if (!data.name || !data.email || !data.phone || !data.institution) {
+    showNotification('Please fill all required fields', 'error');
+    return;
+  }
+  
+  // Validate email
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    showNotification('Please enter a valid email address', 'error');
+    return;
+  }
+  
+  // Validate phone (10 digits)
+  if (!/^[0-9]{10}$/.test(data.phone)) {
+    showNotification('Please enter a valid 10-digit mobile number', 'error');
+    return;
+  }
+  
+  // Submit to server
+  fetch('submit_application.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(result => {
+    if (result.success) {
+      showNotification('Thank you! Redirecting...', 'success');
+      sessionStorage.setItem('formSubmitted', 'true');
+      setTimeout(() => {
+        window.location.href = 'thankyou.html';
+      }, 1000);
+      event.target.reset();
+    } else {
+      showNotification('Error: ' + result.message, 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showNotification('An error occurred. Please try again later.', 'error');
+  });
+}
+

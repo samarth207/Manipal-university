@@ -1,0 +1,21 @@
+# Robots.txt for Online Manipal
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://manipalonlineadmission.in/sitemap.xml
+
+# Disallow admin/server files
+Disallow: /config.php
+Disallow: /setup_database.php
+Disallow: /*.php$
+
+# Allow CSS and JS files for proper rendering
+Allow: /styles.css
+Allow: /script.js
+
+# Allow images
+Allow: /images/
+
+# Crawl delay (optional - be considerate of server resources)
+Crawl-delay: 1
