@@ -1,9 +1,9 @@
 <?php
-// Database configuration
-define('DB_HOST', 'localhost'); // Usually 'localhost' in cPanel
-define('DB_USER', 'manipal1_samarth'); // Your cPanel database username
-define('DB_PASS', '1!2@3#QwE'); // Your database password
-define('DB_NAME', 'manipal1_manipal_db'); // Your database name
+// Database configuration for Hostinger
+define('DB_HOST', 'localhost'); // On Hostinger shared hosting, localhost works
+define('DB_USER', 'u261758575_samarth'); // Your Hostinger database username
+define('DB_PASS', "s8jlXp3*Le"); // Your Hostinger database password
+define('DB_NAME', 'u261758575_manipal'); // Your Hostinger database name
 
 // Create database connection
 function getDBConnection() {

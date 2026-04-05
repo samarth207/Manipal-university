@@ -39,9 +39,12 @@ function scrollCourses(direction) {
 }
 
 function enrollCourse(course, university){
-  document.getElementById('course').value = course;
-  window.scrollTo({top:0,behavior:'smooth'});
-  showNotification('Selected course: ' + course + ' from ' + university + '. Please fill the form to enroll.', 'info');
+  // Open the Apply Now modal and pre-select the course
+  const courseSelect = document.getElementById('apply_course');
+  if (courseSelect) {
+    courseSelect.value = course;
+  }
+  openApplyNowModal();
 }
 
 // Tab switching function
@@ -428,6 +431,26 @@ function submitApplyNow(event) {
 // Read More functionality for testimonials (now handled via onclick in HTML)
 document.addEventListener('DOMContentLoaded', function() {
   // Any additional initialization can go here
+  
+  // Auto-open Apply Now modal after 6 seconds (only once per session)
+  if (!sessionStorage.getItem('popupShown')) {
+    setTimeout(function() {
+      // Only show if no modal is currently open and form hasn't been submitted
+      const brochureModal = document.getElementById('brochureModal');
+      const testimonialModal = document.getElementById('testimonialModal');
+      const applyNowModal = document.getElementById('applyNowModal');
+      
+      const isBrochureOpen = brochureModal && brochureModal.classList.contains('show');
+      const isTestimonialOpen = testimonialModal && (testimonialModal.classList.contains('show') || testimonialModal.style.display === 'flex');
+      const isApplyNowOpen = applyNowModal && (applyNowModal.classList.contains('show') || applyNowModal.style.display === 'flex');
+      
+      // Don't show if any modal is already open or form was already submitted
+      if (!isBrochureOpen && !isTestimonialOpen && !isApplyNowOpen && !sessionStorage.getItem('formSubmitted')) {
+        openApplyNowModal();
+        sessionStorage.setItem('popupShown', 'true');
+      }
+    }, 6000); // 6 seconds delay
+  }
 });
 
 // Footer Form Submission
