@@ -4,15 +4,24 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://manipalonlineadmission.in/sitemap.xml
+Sitemap: https://manipalonlineadmission.in/blog-sitemap.xml
 
 # Disallow admin/server files
 Disallow: /config.php
 Disallow: /setup_database.php
+Disallow: /blog_setup.php
+Disallow: /admin/
 Disallow: /*.php$
+
+# Allow blog pages
+Allow: /blog.php
+Allow: /blog-post.php
+Allow: /blog-sitemap.php
 
 # Allow CSS and JS files for proper rendering
 Allow: /styles.css
 Allow: /script.js
+Allow: /blog-styles.css
 
 # Allow images
 Allow: /images/

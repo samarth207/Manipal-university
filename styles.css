@@ -80,6 +80,20 @@ header{
   transform: translateY(-1px);
   box-shadow:0 6px 16px rgba(255,106,0,0.3);
 }
+.blog-nav-link{
+  font-weight:600;
+  font-size:14px;
+  color:#111;
+  text-decoration:none;
+  padding:6px 14px;
+  border-radius:20px;
+  border:2px solid var(--accent);
+  transition: all 0.3s ease;
+}
+.blog-nav-link:hover{
+  background:var(--accent);
+  color:#fff;
+}
 
 /* HERO LAYOUT */
 .hero-wrapper {

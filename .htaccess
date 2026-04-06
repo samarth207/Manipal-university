@@ -1,6 +1,14 @@
 # Enable RewriteEngine
 RewriteEngine On
 
+# Blog URL rewrites (must be before .html extension rule)
+RewriteRule ^blog/?$ blog.php [L,QSA]
+RewriteRule ^blog/category/([a-z0-9-]+)/?$ blog.php?category=$1 [L,QSA]
+RewriteRule ^blog/([a-z0-9-]+)/?$ blog-post.php?slug=$1 [L,QSA]
+
+# Blog sitemap
+RewriteRule ^blog-sitemap\.xml$ blog-sitemap.php [L]
+
 # Remove .html extension from URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
