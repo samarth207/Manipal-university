@@ -274,8 +274,8 @@
             <input id="name" type="text" placeholder="Enter your full name" maxlength="100" />
             <input id="email" type="email" placeholder="Enter your email" maxlength="100" />
             <div class="phone-field">
-              <span class="country-code-inline">🇮🇳 +91</span>
-              <input id="phone" type="tel" placeholder="Enter your mobile number" maxlength="10" pattern="[0-9]{10}" />
+              <select class="cc-select" name="country_code" aria-label="Country code"></select>
+              <input id="phone" type="tel" placeholder="Enter your mobile number" maxlength="15" pattern="[0-9]{6,15}" />
             </div>
             
             <select id="course" aria-label="Select course">
@@ -1203,8 +1203,8 @@
                 <div class="form-group">
                   <label for="footer_mobile">Mobile number <span class="required">*</span></label>
                   <div class="phone-input">
-                    <span class="country-code">+91</span>
-                    <input type="tel" id="footer_mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" maxlength="10" required />
+                    <select class="cc-select" name="country_code" aria-label="Country code"></select>
+                    <input type="tel" id="footer_mobile" placeholder="Enter your mobile number" pattern="[0-9]{6,15}" maxlength="15" required />
                   </div>
                 </div>
                 
@@ -1275,8 +1275,8 @@
         <div class="form-group">
           <label for="brochure_phone">Mobile number <span class="required">*</span></label>
           <div class="phone-input">
-            <span class="country-code">+91</span>
-            <input type="tel" id="brochure_phone" placeholder="Enter your mobile number" maxlength="10" pattern="[0-9]{10}" required />
+            <select class="cc-select" name="country_code" aria-label="Country code"></select>
+            <input type="tel" id="brochure_phone" placeholder="Enter your mobile number" maxlength="15" pattern="[0-9]{6,15}" required />
           </div>
         </div>
         
@@ -1355,8 +1355,8 @@
               <div class="form-group">
                 <label for="apply_mobile">Mobile number <span class="required">*</span></label>
                 <div class="phone-input">
-                  <span class="country-code">+91</span>
-                  <input type="tel" class="form-control" id="apply_mobile" name="mobile_number" placeholder="Enter your mobile number" maxlength="10" pattern="[0-9]{10}" required>
+                  <select class="cc-select" name="country_code" aria-label="Country code"></select>
+                  <input type="tel" class="form-control" id="apply_mobile" name="mobile_number" placeholder="Enter your mobile number" maxlength="15" pattern="[0-9]{6,15}" required>
                 </div>
               </div>
               

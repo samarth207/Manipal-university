@@ -280,15 +280,20 @@
       box-shadow: 0 0 0 3px rgba(255,106,0,0.1);
     }
     .phone-row { display: flex; gap: 8px; }
-    .phone-code {
-      padding: 12px 14px;
+    .cc-select {
+      padding: 12px 6px;
       border: 1px solid #ddd;
       border-radius: 8px;
       background: #f8f8f8;
-      font-size: 0.95rem;
-      min-width: 80px;
-      text-align: center;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: #333;
+      cursor: pointer;
+      outline: none;
+      width: 110px;
+      flex-shrink: 0;
     }
+    .cc-select:focus { border-color: var(--accent); }
     .consent-box {
       display: flex;
       gap: 10px;
@@ -1534,8 +1539,8 @@
             <div class="form-group">
               <label>Mobile number <span class="req">*</span></label>
               <div class="phone-row">
-                <span class="phone-code">🇮🇳 +91</span>
-                <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="9876543210" style="flex:1" />
+                <select class="cc-select" name="country_code" aria-label="Country code"></select>
+                <input type="tel" name="phone" required pattern="[0-9]{6,15}" placeholder="9876543210" style="flex:1" />
               </div>
             </div>
             <div class="consent-box">
@@ -2626,7 +2631,10 @@
         </div>
         <div style="margin-bottom:15px">
           <label style="display:block;margin-bottom:6px;font-weight:500;font-size:0.9rem">Mobile Number *</label>
-          <input type="tel" name="phone" required pattern="[0-9]{10}" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem" />
+          <div style="display:flex;align-items:center;gap:8px">
+            <select class="cc-select" name="country_code" aria-label="Country code" style="width:110px;flex-shrink:0"></select>
+            <input type="tel" name="phone" required pattern="[0-9]{6,15}" style="flex:1;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:0.95rem;outline:none;min-width:0" />
+          </div>
         </div>
         <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:white;border:none;border-radius:30px;font-size:1rem;font-weight:700;cursor:pointer">Submit Application</button>
       </form>
