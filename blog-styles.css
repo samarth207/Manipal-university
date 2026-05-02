@@ -730,11 +730,12 @@
 .blog-inline-form-wrap {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border-radius: 12px;
-    padding: 36px 32px;
-    margin: 40px 0;
+    padding: 26px 22px 5px;
+    margin: 20px 0;
     color: #fff;
 }
-.bilf-heading {
+.bilf-heading,
+.blog-post-content .bilf-heading {
     margin: 0 0 24px;
     font-size: 1.5rem;
     font-weight: 700;
