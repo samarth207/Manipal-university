@@ -19,6 +19,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 $full_name = trim($input['name'] ?? '');
 $email = trim($input['email'] ?? '');
 $phone = trim($input['phone'] ?? '');
+$country_code = trim($input['country_code'] ?? '');
 $course = trim($input['course'] ?? '');
 $consent = isset($input['consent']) && $input['consent'] ? 1 : 0;
 
@@ -34,10 +35,15 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// Validate phone (exactly 10 digits)
-if (!preg_match('/^[0-9]{10}$/', $phone)) {
-    echo json_encode(['success' => false, 'message' => 'Phone number must be exactly 10 digits']);
+// Validate phone (6–15 digits)
+if (!preg_match('/^[0-9]{6,15}$/', $phone)) {
+    echo json_encode(['success' => false, 'message' => 'Please enter a valid phone number (6–15 digits)']);
     exit;
+}
+
+// Prepend country code if provided
+if (!empty($country_code) && preg_match('/^\+[0-9]{1,4}$/', $country_code)) {
+    $phone = $country_code . ' ' . $phone;
 }
 
 // OTP verification disabled - will enable when SMS gateway is purchased

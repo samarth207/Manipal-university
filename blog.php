@@ -155,6 +155,7 @@ if ($category_slug) {
                 <a href="index.html"><img src="images/OM_Logo.svg" alt="Online Manipal Logo" class="main-logo"></a>
             </div>
             <div class="contact">
+                <a href="index.html" class="blog-nav-link">Home</a>
                 <a href="tel:+918920785477" class="phone-number">+91-8920785477</a>
                 <a href="index.html#hero-form" class="apply-btn">Apply Now</a>
             </div>

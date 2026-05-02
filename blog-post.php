@@ -1,6 +1,42 @@
 <?php
 require_once 'config.php';
 
+// Generate HTML for an embedded lead capture form
+function generateBlogLeadForm(string $heading): string {
+    $h = htmlspecialchars($heading);
+    return <<<HTML
+<div class="blog-inline-form-wrap">
+  <h3 class="bilf-heading">{$h}</h3>
+  <form class="bilf-form" novalidate>
+    <div class="bilf-grid">
+      <input type="text" name="name" placeholder="Full Name *" required class="bilf-field">
+      <input type="email" name="email" placeholder="Email Address *" required class="bilf-field">
+      <div class="bilf-phone">
+        <select class="cc-select bilf-cc" name="country_code" aria-label="Country code"></select>
+        <input type="tel" name="phone" placeholder="Mobile Number *" required class="bilf-field bilf-phone-field" pattern="[0-9]{6,15}" maxlength="15">
+      </div>
+      <select name="course" required class="bilf-field bilf-full-row">
+        <option value="">Select Course *</option>
+        <option value="MBA">MBA</option>
+        <option value="MCA">MCA</option>
+        <option value="BBA">BBA</option>
+        <option value="BCA">BCA</option>
+        <option value="B.Com">B.Com</option>
+        <option value="M.Com">M.Com</option>
+        <option value="MA in Economics">MA in Economics</option>
+        <option value="MA.JMC">MA in Journalism &amp; Mass Comm</option>
+        <option value="MA in English">MA in English</option>
+        <option value="MA in Political Science">MA in Political Science</option>
+        <option value="MCA-SMU">MCA (SMU)</option>
+      </select>
+    </div>
+    <button type="submit" class="bilf-btn">Apply Now &rarr;</button>
+    <p class="bilf-msg" aria-live="polite"></p>
+  </form>
+</div>
+HTML;
+}
+
 $conn = getDBConnection();
 $conn->set_charset("utf8mb4");
 
@@ -223,6 +259,7 @@ if (preg_match_all('/<div class="faq-item"[^>]*>.*?<h3[^>]*>(.*?)<\/h3>.*?<p[^>]
                 <a href="index.html"><img src="images/OM_Logo.svg" alt="Online Manipal Logo" class="main-logo"></a>
             </div>
             <div class="contact">
+                <a href="blog.php" class="blog-nav-link">Blog</a>
                 <a href="tel:+918920785477" class="phone-number">+91-8920785477</a>
                 <a href="index.html#hero-form" class="apply-btn">Apply Now</a>
             </div>
@@ -307,7 +344,20 @@ if (preg_match_all('/<div class="faq-item"[^>]*>.*?<h3[^>]*>(.*?)<\/h3>.*?<p[^>]
 
                 <!-- Blog Content -->
                 <div class="blog-post-content <?php echo empty($toc) ? 'full-width' : ''; ?>">
-                    <?php echo $post['content']; ?>
+                    <?php
+                    // Replace lead form placeholders with actual form HTML
+                    $rendered_content = preg_replace_callback(
+                        '/<div([^>]*class="blog-lead-form"[^>]*)>(.*?)<\/div>/is',
+                        function ($m) {
+                            if (preg_match('/data-heading="([^"]*)"/i', $m[1], $h)) {
+                                return generateBlogLeadForm(html_entity_decode($h[1], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+                            }
+                            return $m[0];
+                        },
+                        $post['content']
+                    );
+                    echo $rendered_content;
+                    ?>
                 </div>
             </div>
 
@@ -435,6 +485,91 @@ if (preg_match_all('/<div class="faq-item"[^>]*>.*?<h3[^>]*>(.*?)<\/h3>.*?<p[^>]
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-0VM4D9DFER');
+    </script>
+
+    <!-- Blog Inline Lead Form Handler -->
+    <script>
+    (function() {
+        // Country codes list (India pre-selected)
+        var CC = [['+91','India'],['+1','United States / Canada'],['+44','United Kingdom'],['+61','Australia'],['+971','UAE'],['+966','Saudi Arabia'],['+65','Singapore'],['+60','Malaysia'],['+64','New Zealand'],['+353','Ireland'],['+49','Germany'],['+33','France'],['+39','Italy'],['+34','Spain'],['+31','Netherlands'],['+46','Sweden'],['+47','Norway'],['+45','Denmark'],['+41','Switzerland'],['+43','Austria'],['+32','Belgium'],['+351','Portugal'],['+30','Greece'],['+48','Poland'],['+420','Czech Republic'],['+36','Hungary'],['+40','Romania'],['+380','Ukraine'],['+7','Russia'],['+90','Turkey'],['+972','Israel'],['+20','Egypt'],['+27','South Africa'],['+234','Nigeria'],['+254','Kenya'],['+233','Ghana'],['+92','Pakistan'],['+880','Bangladesh'],['+94','Sri Lanka'],['+977','Nepal'],['+95','Myanmar'],['+66','Thailand'],['+84','Vietnam'],['+62','Indonesia'],['+63','Philippines'],['+82','South Korea'],['+81','Japan'],['+86','China'],['+852','Hong Kong'],['+886','Taiwan'],['+55','Brazil'],['+52','Mexico'],['+54','Argentina'],['+57','Colombia'],['+56','Chile'],['+51','Peru'],['+58','Venezuela'],['+593','Ecuador'],['+591','Bolivia'],['+595','Paraguay'],['+598','Uruguay'],['+53','Cuba'],['+1876','Jamaica'],['+1868','Trinidad and Tobago']];
+
+        function initBilfCCSelects() {
+            document.querySelectorAll('.bilf-cc').forEach(function(sel) {
+                if (sel.options.length > 0) return;
+                CC.forEach(function(c) {
+                    var o = document.createElement('option');
+                    o.value = c[0];
+                    o.textContent = c[1] + ' (' + c[0] + ')';
+                    if (c[0] === '+91') o.selected = true;
+                    sel.appendChild(o);
+                });
+            });
+        }
+
+        function handleBilfSubmit(e) {
+            e.preventDefault();
+            var form = e.target;
+            var msgEl = form.querySelector('.bilf-msg');
+            var btn = form.querySelector('.bilf-btn');
+
+            var name = form.querySelector('[name="name"]').value.trim();
+            var email = form.querySelector('[name="email"]').value.trim();
+            var phone = form.querySelector('[name="phone"]').value.trim();
+            var ccSel = form.querySelector('[name="country_code"]');
+            var country_code = ccSel ? ccSel.value : '+91';
+            var course = form.querySelector('[name="course"]').value;
+
+            if (!name || !email || !phone || !course) {
+                msgEl.textContent = 'Please fill in all fields.';
+                msgEl.className = 'bilf-msg error';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Submitting\u2026';
+            msgEl.textContent = '';
+            msgEl.className = 'bilf-msg';
+
+            fetch('/submit_lead.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, phone: phone, country_code: country_code, course: course, consent: true })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    msgEl.textContent = data.message || 'Thank you! We will contact you soon.';
+                    msgEl.className = 'bilf-msg success';
+                    form.reset();
+                    initBilfCCSelects();
+                } else {
+                    msgEl.textContent = data.message || 'Something went wrong. Please try again.';
+                    msgEl.className = 'bilf-msg error';
+                    btn.disabled = false;
+                    btn.textContent = 'Apply Now \u2192';
+                }
+            })
+            .catch(function() {
+                msgEl.textContent = 'Network error. Please try again.';
+                msgEl.className = 'bilf-msg error';
+                btn.disabled = false;
+                btn.textContent = 'Apply Now \u2192';
+            });
+        }
+
+        function initBilfForms() {
+            initBilfCCSelects();
+            document.querySelectorAll('.bilf-form').forEach(function(form) {
+                form.addEventListener('submit', handleBilfSubmit);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBilfForms);
+        } else {
+            initBilfForms();
+        }
+    })();
     </script>
 </body>
 </html>

@@ -331,6 +331,21 @@ $msg = $_GET['msg'] ?? '';
                             <input type="hidden" name="tags" id="tagsHidden" value="<?php echo sanitize(implode(',', $post_tags)); ?>">
                             <div class="help-text">Press Enter or comma to add a tag.</div>
                         </div>
+
+                        <!-- Insert Lead Form -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>&#128203; Insert Lead Form</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="lfHeading">Form Heading</label>
+                                <input type="text" id="lfHeading" placeholder="e.g., Start Your Journey Today" value="Start Your Journey Today">
+                                <div class="help-text">Heading shown above the form in the blog post. Fields included: Name, Email, Country Code + Phone, Course.</div>
+                            </div>
+                            <button type="button" class="btn btn-primary" style="width:100%;margin-top:4px;" onclick="insertLeadForm()">
+                                Insert Form into Post
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -461,6 +476,23 @@ function addCategory() {
     .catch(err => alert('Error: ' + err.message));
 }
 
+// Insert Lead Form into TinyMCE
+function insertLeadForm() {
+    var heading = document.getElementById('lfHeading').value.trim();
+    if (!heading) {
+        alert('Please enter a form heading.');
+        return;
+    }
+    var ed = tinymce.get('blog-content');
+    if (!ed) { alert('Editor not ready.'); return; }
+    var safeHeading = heading.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    ed.insertContent(
+        '<div class="blog-lead-form" data-heading="' + safeHeading + '">' +
+        '\uD83D\uDCCB Lead Form: ' + escapeHtml(heading) +
+        '</div><p></p>'
+    );
+}
+
 // TinyMCE Init
 tinymce.init({
     selector: '#blog-content',
@@ -468,6 +500,7 @@ tinymce.init({
     menubar: 'file edit view insert format table',
     plugins: 'lists link image table code fullscreen preview searchreplace wordcount help',
     toolbar: 'undo redo | blocks | bold italic underline strikethrough | bullist numlist | alignleft aligncenter alignright | link image table | faqblock | code fullscreen preview',
+    extended_valid_elements: 'div[*],span[*]',
     block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
     image_advtab: true,
     image_caption: true,
@@ -558,6 +591,7 @@ tinymce.init({
         .faq-item { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #e2e8f0; }
         .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         a { color: #ff6a00; }
+        .blog-lead-form { background: #1a1a2e; border: 2px dashed #ff6a00; border-radius: 8px; padding: 16px 20px; color: rgba(255,255,255,0.85); margin: 20px 0; font-size: 14px; }
         blockquote { border-left: 4px solid #ff6a00; padding: 12px 20px; margin: 16px 0; background: #fff5eb; }
     `
 });

@@ -725,3 +725,104 @@
         padding: 40px 20px;
     }
 }
+
+/* ===== BLOG INLINE LEAD FORM ===== */
+.blog-inline-form-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 12px;
+    padding: 36px 32px;
+    margin: 40px 0;
+    color: #fff;
+}
+.bilf-heading {
+    margin: 0 0 24px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+.bilf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.bilf-field {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+.bilf-field::placeholder { color: rgba(255,255,255,0.5); }
+.bilf-field:focus { border-color: #ff6a00; }
+.bilf-field option { background: #1a1a2e; color: #fff; }
+.bilf-phone {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    grid-column: 1 / -1;
+}
+.bilf-cc {
+    width: 110px;
+    flex-shrink: 0;
+    padding: 12px 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+}
+.bilf-cc option { background: #1a1a2e; color: #fff; }
+.bilf-phone-field { min-width: 0; flex: 1; }
+.bilf-full-row { grid-column: 1 / -1; }
+.bilf-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #ff6a00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 4px;
+}
+.bilf-btn:hover { background: #e55f00; transform: translateY(-1px); }
+.bilf-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.bilf-msg {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 14px;
+    min-height: 20px;
+}
+.bilf-msg.success { color: #4ade80; }
+.bilf-msg.error { color: #f87171; }
+/* Placeholder shown inside TinyMCE editor */
+.blog-lead-form {
+    background: #1a1a2e;
+    border: 2px dashed #ff6a00;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    margin: 20px 0;
+    font-family: inherit;
+}
+@media (max-width: 600px) {
+    .bilf-grid { grid-template-columns: 1fr; }
+    .bilf-phone { grid-column: 1; }
+    .blog-inline-form-wrap { padding: 24px 16px; }
+}
